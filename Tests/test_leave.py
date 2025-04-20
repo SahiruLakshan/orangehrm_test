@@ -1,5 +1,4 @@
 import pytest
-import time
 from selenium import webdriver  # This was missing
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -22,7 +21,6 @@ class TestLeave:
         login_page.enter_password(Config.PASSWORD)
         login_page.click_login()
 
-        # Wait for dashboard to load
         WebDriverWait(self.driver, 15).until(
             EC.presence_of_element_located((By.XPATH, '//h6[text()="Dashboard"]'))
         )
