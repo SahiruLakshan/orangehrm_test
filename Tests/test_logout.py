@@ -1,4 +1,6 @@
+import os
 import pytest
+from datetime import datetime
 from selenium import webdriver
 from PageObjects.LoginPage import LoginPage
 from PageObjects.DashboardPage import DashboardPage
@@ -23,6 +25,13 @@ class TestLogout:
     def test_logout_functionality(self, setup):
         dashboard_page = DashboardPage(self.driver)
         dashboard_page.click_user_dropdown()
+
+        if not os.path.exists("Screenshots"):
+            os.makedirs("Screenshots")
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        screenshot_path = f"Screenshots/logout_{timestamp}.png"
+        self.driver.save_screenshot(screenshot_path)
+
         dashboard_page.click_logout()
 
         login_page = LoginPage(self.driver)

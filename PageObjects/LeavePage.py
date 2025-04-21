@@ -8,7 +8,6 @@ class LeavePage:
         self.driver = driver
         self.wait = WebDriverWait(driver, 15)
 
-    # Multiple possible locators for the header
     LEAVE_HEADER_LOCATORS = [
         (By.XPATH, '//h5[contains(., "Leave")]'),  # Try h5 first
         (By.XPATH, '//h6[contains(., "Leave")]'),  # Then try h6
